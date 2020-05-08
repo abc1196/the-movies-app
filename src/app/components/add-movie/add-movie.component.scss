@@ -1,0 +1,26 @@
+.add-movie-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: calc(100% - 64px);
+}
+
+.mat-card-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-form-field {
+  padding: 8px 0;
+}
+
+.file-container {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 0;
+
+  & label {
+    padding-bottom: 1em;
+  }
+}

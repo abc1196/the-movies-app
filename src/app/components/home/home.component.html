@@ -1,0 +1,10 @@
+<div *ngIf="movies.length === 0" class="home-container">
+    <mat-icon aria-hidden="false" aria-label="Home icon" color="primary">movie</mat-icon>
+    <h2 class="mat-h2">
+        You haven't added your first movie
+    </h2>
+    <button mat-flat-button color="primary" routerLink="/add">Add new movie</button>
+</div>
+<div *ngIf="movies.length > 0">
+    <app-movies [movies]="movies" (selectMovie)="onSelectMovie()" (deleteMovie)="onDeleteMovie()"></app-movies>
+</div>

@@ -40,7 +40,7 @@ export class AddMovieComponent implements OnInit {
       .subscribe((image) => {
         movieData.image = image;
         this.movieService.addMovie(movieData);
-        this.messageService.add('Succesfuly added new movie!');
+        this.messageService.showSuccess('Succesfuly added new movie!');
         this.router.navigate(['/home']);
       });
   }

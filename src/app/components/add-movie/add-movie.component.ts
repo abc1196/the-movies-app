@@ -5,7 +5,7 @@ import { FileService } from 'src/app/services/file.service';
 import { take } from 'rxjs/operators';
 import { MovieService } from 'src/app/services/movie.service';
 import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MessageService } from 'src/app/services/message.service';
 
 @Component({
   selector: 'app-add-movie',
@@ -18,9 +18,9 @@ export class AddMovieComponent implements OnInit {
   constructor(
     private fileService: FileService,
     private movieService: MovieService,
+    private messageService: MessageService,
     private formBuilder: FormBuilder,
-    private router: Router,
-    private snackBar: MatSnackBar
+    private router: Router
   ) {
     this.movieForm = this.formBuilder.group({
       title: ['', Validators.required],
@@ -40,15 +40,10 @@ export class AddMovieComponent implements OnInit {
       .subscribe((image) => {
         movieData.image = image;
         this.movieService.addMovie(movieData);
-        this.openSnackBar('Succesfuly added new movie!');
+        this.messageService.add('Succesfuly added new movie!');
         this.router.navigate(['/home']);
       });
   }
-
-  openSnackBar(message) {
-    this.snackBar.open(message, 'OK', { duration: 3000 });
-  }
-
   onFileChange(event) {
     if (event.target.files && event.target.files.length) {
       const file = event.target.files[0];

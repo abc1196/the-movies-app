@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -19,12 +20,14 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { HomeComponent } from './components/home/home.component';
 import { MoviesComponent } from './components/movies/movies.component';
 import { MovieItemComponent } from './components/movie-item/movie-item.component';
 import { MovieDetailComponent } from './components/movie-detail/movie-detail.component';
 import { AddMovieComponent } from './components/add-movie/add-movie.component';
+import { TopMoviesComponent } from './components/top-movies/top-movies.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +38,7 @@ import { AddMovieComponent } from './components/add-movie/add-movie.component';
     MovieItemComponent,
     MovieDetailComponent,
     AddMovieComponent,
+    TopMoviesComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +46,7 @@ import { AddMovieComponent } from './components/add-movie/add-movie.component';
     BrowserAnimationsModule,
     LayoutModule,
     ReactiveFormsModule,
+    HttpClientModule,
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
@@ -54,6 +59,7 @@ import { AddMovieComponent } from './components/add-movie/add-movie.component';
     MatNativeDateModule,
     MatTooltipModule,
     MatSnackBarModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent],

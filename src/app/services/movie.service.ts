@@ -1,25 +1,38 @@
 import { Injectable } from '@angular/core';
 import { Movie } from '../data/movie';
+import { HttpClient } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { catchError, tap, map } from 'rxjs/operators';
+import { MessageService } from './message.service';
+import { MoviesWrapper } from '../data/moviesWrapper';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MovieService {
+  topMoviesUrl: string = 'http://www.mocky.io/v2/5dc3c053300000540034757b';
+
   movies: Movie[] = [
     {
       title: 'Avengers Endgame',
       release: new Date(),
-      image: 'https://material.angular.io/assets/img/examples/shiba2.jpg',
+      image:
+        'https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_UX182_CR0,0,182,268_AL_.jpg',
       description: '',
     },
     {
       title: 'Avengers Endgame',
       release: new Date(),
-      image: 'https://material.angular.io/assets/img/examples/shiba2.jpg',
+      image:
+        'https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_UX182_CR0,0,182,268_AL_.jpg',
       description: '',
     },
   ];
-  constructor() {}
+
+  constructor(
+    private http: HttpClient,
+    private messageService: MessageService
+  ) {}
 
   getMovies(): Movie[] {
     return this.movies;
@@ -32,5 +45,36 @@ export class MovieService {
 
   deleteMovie(index: number): void {
     this.movies.splice(index, 1);
+  }
+
+  getTopMovies(): Observable<Movie[]> {
+    return this.http.get<MoviesWrapper>(this.topMoviesUrl).pipe(
+      map((response) => response.movies),
+      catchError(this.handleError<Movie[]>('getHeroes', []))
+    );
+  }
+
+  /**
+   * Handle Http operation that failed.
+   * Let the app continue.
+   * @param operation - name of the operation that failed
+   * @param result - optional value to return as the observable result
+   */
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      // TODO: send the error to remote logging infrastructure
+      console.error(error); // log to console instead
+
+      // TODO: better job of transforming error for user consumption
+      this.log(`${operation} failed: ${error.message}`);
+
+      // Let the app keep running by returning an empty result.
+      return of(result as T);
+    };
+  }
+
+  /** Log a HeroService message with the MessageService */
+  private log(message: string) {
+    this.messageService.add(message);
   }
 }

@@ -5,7 +5,20 @@ import { Movie } from '../data/movie';
   providedIn: 'root',
 })
 export class MovieService {
-  movies: Movie[] = [];
+  movies: Movie[] = [
+    {
+      title: 'Avengers Endgame',
+      release: new Date(),
+      image: 'https://material.angular.io/assets/img/examples/shiba2.jpg',
+      description: '',
+    },
+    {
+      title: 'Avengers Endgame',
+      release: new Date(),
+      image: 'https://material.angular.io/assets/img/examples/shiba2.jpg',
+      description: '',
+    },
+  ];
   constructor() {}
 
   getMovies(): Movie[] {

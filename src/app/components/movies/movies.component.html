@@ -1,3 +1,4 @@
-<div *ngFor="let movie of movies">
-    {{movie.title}}
+<div *ngFor="let movie of movies; index as i">
+    <app-movie-item [movie]="movie" [index]="i" [selectMovie]="selectMovie" [deleteMovie]="deleteMovie">
+    </app-movie-item>
 </div>

@@ -1,1 +1,15 @@
-<p>movie-detail works!</p>
+<div class="movie-detail-container">
+    <div class="new-movie-button-container">
+        <button mat-flat-button color="primary" routerLink="/add">Add new movie</button>
+    </div>
+    <mat-card *ngIf="movie">
+        <mat-card-header>
+            <mat-card-title>{{movie.title}}</mat-card-title>
+            <mat-card-subtitle>Release date: {{movie.release | date:'MM/dd/yyyy'}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image *ngIf="movie.image" src="{{movie.image}}" alt="{{movie.title}}">
+        <mat-card-content>
+            {{movie.description}}
+        </mat-card-content>
+    </mat-card>
+</div>

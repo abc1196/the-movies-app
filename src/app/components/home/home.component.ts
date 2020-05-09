@@ -16,11 +16,13 @@ export class HomeComponent implements OnInit {
     this.movies = this.movieService.getMovies();
   }
 
-  onSelectMovie(): void {
-    console.log('onSelectMovie');
+  onSelectMovie(movie: Movie): void {
+    console.log('onSelectMovie', movie);
+    this.selectedMovie = movie;
   }
 
-  onDeleteMovie(): void {
-    console.log('onDeleteMovie');
+  onDeleteMovie(index: number): void {
+    console.log('onDeleteMovie', index);
+    this.movieService.deleteMovie(index);
   }
 }

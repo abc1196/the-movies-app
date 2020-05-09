@@ -6,12 +6,22 @@
   height: calc(100% - 64px);
 }
 
+.movies-container {
+  padding: 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: calc(100% - 112px);
+  width: calc(100% - 48px);
+}
+
 .mat-icon {
-    height: 48px;
-    width: 48px;
-    font-size: 48px;
+  height: 48px;
+  width: 48px;
+  font-size: 48px;
 }
 
 .mat-h2 {
-    text-align: center;
+  text-align: center;
 }

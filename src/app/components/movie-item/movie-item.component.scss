@@ -1,0 +1,8 @@
+.movie-item-container {
+  cursor: pointer;
+  outline: none;
+  margin-bottom: 24px;
+  &:hover > .mat-card{
+    background: transparentize(lightgray, 0.8);
+  }
+}

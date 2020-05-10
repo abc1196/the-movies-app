@@ -42,7 +42,7 @@ export class MovieService {
   getTopMovies(): Observable<Movie[]> {
     return this.http.get<MoviesWrapper>(this.topMoviesUrl).pipe(
       map((response) => response.movies),
-      catchError(this.errorService.handleError<Movie[]>('getHeroes', []))
+      catchError(this.errorService.handleError<Movie[]>('get Top Movies', []))
     );
   }
 }

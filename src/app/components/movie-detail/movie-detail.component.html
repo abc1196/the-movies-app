@@ -1,6 +1,8 @@
 <div class="movie-detail-container">
     <div class="new-movie-button-container">
-        <button mat-flat-button color="primary" routerLink="/add">Add new movie</button>
+        <button mat-flat-button color="primary" routerLink="/add">
+            <mat-icon aria-hidden="false" aria-label="Add movie icon">add</mat-icon>Movie
+        </button>
     </div>
     <mat-card *ngIf="movie">
         <img mat-card-image *ngIf="movie.image" src="{{movie.image}}" alt="{{movie.title}}">

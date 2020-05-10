@@ -1,6 +1,12 @@
-<div *ngIf="isLoading" class="progress-container">
+<div *ngIf="isLoading" class="base-container">
     <mat-progress-spinner color="primary" mode="indeterminate" diameter="50">
     </mat-progress-spinner>
+</div>
+<div *ngIf="!isLoading && movies.length === 0" class="base-container">
+    <mat-icon aria-hidden="false" aria-label="Movie icon" color="primary">movie</mat-icon>
+    <h2 class="mat-h2">
+        There are no top movies. Try again!
+    </h2>
 </div>
 <div class="movies-container" *ngIf="!isLoading">
     <mat-card *ngFor="let movie of movies">

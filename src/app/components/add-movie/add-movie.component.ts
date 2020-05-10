@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { fileTypeValidator } from 'src/app/directives/file-type.directive';
+import { fileTypeValidator } from 'src/app/validators/file-type.validator';
 import { FileService } from 'src/app/services/file.service';
 import { take } from 'rxjs/operators';
 import { MovieService } from 'src/app/services/movie.service';

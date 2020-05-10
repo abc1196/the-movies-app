@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Movie } from 'src/app/data/movie';
+import { MovieService } from 'src/app/services/movie.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-movie-detail',
@@ -7,9 +9,17 @@ import { Movie } from 'src/app/data/movie';
   styleUrls: ['./movie-detail.component.scss'],
 })
 export class MovieDetailComponent implements OnInit {
-  @Input() movie: Movie;
+  movie: Movie;
+  subscription: Subscription;
+  constructor(private movieService: MovieService) {}
 
-  constructor() {}
+  ngOnInit(): void {
+    this.subscription = this.movieService
+      .getMovie()
+      .subscribe((movie) => (this.movie = movie));
+  }
 
-  ngOnInit(): void {}
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 }

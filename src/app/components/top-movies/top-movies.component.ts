@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MovieService } from 'src/app/services/movie.service';
 import { Movie } from 'src/app/data/movie';
 import { take } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-top-movies',
@@ -11,17 +12,21 @@ import { take } from 'rxjs/operators';
 export class TopMoviesComponent implements OnInit {
   movies: Movie[];
   isLoading: boolean = true;
+  subscription: Subscription;
 
   constructor(private movieService: MovieService) {}
 
   ngOnInit(): void {
-    this.movieService
+    this.subscription = this.movieService
       .getTopMovies()
       .pipe(take(1))
       .subscribe((movies) => {
         this.movies = movies;
         this.isLoading = false;
-        console.log(this.movies, this.isLoading);
       });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

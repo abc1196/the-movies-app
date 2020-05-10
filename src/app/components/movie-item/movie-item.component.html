@@ -1,12 +1,12 @@
 <div class="movie-item-container">
-    <mat-card (click)="selectMovie.emit(movie)">
+    <mat-card [class.selected]="selected" (click)="selectMovie.emit()">
         <mat-card-header>
             <mat-card-title>{{movie.title}}</mat-card-title>
             <mat-card-subtitle>Release date: {{movie.release | date:'MM/dd/yyyy'}}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-actions align="end">
-            <button (click)="deleteMovie.emit(index)" mat-icon-button color="warn"
-                matTooltip="Delete movie" aria-label="Delete movie icon button">
+            <button (click)="deleteMovie.emit()" mat-icon-button color="warn" matTooltip="Delete movie"
+                aria-label="Delete movie icon button">
                 <mat-icon>delete</mat-icon>
             </button>
         </mat-card-actions>

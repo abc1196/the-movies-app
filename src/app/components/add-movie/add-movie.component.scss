@@ -3,7 +3,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: calc(100% - 64px);
+  min-height: calc(100% - 64px);
+}
+
+.add-movie-form {
+  max-width: 100%;
 }
 
 .mat-card-content {

@@ -1,5 +1,5 @@
 <div class="add-movie-container">
-    <form [formGroup]="movieForm" novalidate (ngSubmit)="onSubmit(movieForm.value)">
+    <form class="add-movie-form" [formGroup]="movieForm" novalidate (ngSubmit)="onSubmit(movieForm.value)">
         <mat-card>
             <mat-card-header>
                 <div mat-card-avatar>

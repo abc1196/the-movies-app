@@ -18,7 +18,7 @@ $the-movies-app-accent: mat-palette($mat-pink, A200, A100, A400);
 $the-movies-app-warn: mat-palette($mat-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
-$the-movies-app-theme: mat-light-theme(
+$the-movies-app-theme: mat-dark-theme(
   $the-movies-app-primary,
   $the-movies-app-accent,
   $the-movies-app-warn

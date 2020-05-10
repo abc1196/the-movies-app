@@ -1,5 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Movie } from 'src/app/data/movie';
+import { MovieService } from 'src/app/services/movie.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-movies',
@@ -8,10 +10,26 @@ import { Movie } from 'src/app/data/movie';
 })
 export class MoviesComponent implements OnInit {
   @Input() movies: Movie[];
-  @Output() selectMovie: EventEmitter<any> = new EventEmitter();
-  @Output() deleteMovie: EventEmitter<any> = new EventEmitter();
+  selectedMovie: Movie;
+  subscription: Subscription;
 
-  constructor() {}
+  constructor(private movieService: MovieService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.subscription = this.movieService
+      .getMovie()
+      .subscribe((movie) => (this.selectedMovie = movie));
+  }
+
+  onSelectMovie(movie: Movie): void {
+    this.movieService.setMovie(movie);
+  }
+
+  onDeleteMovie(index: number): void {
+    this.movieService.deleteMovie(index);
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 }

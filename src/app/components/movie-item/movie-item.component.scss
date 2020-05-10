@@ -2,7 +2,15 @@
   cursor: pointer;
   outline: none;
   margin-bottom: 24px;
-  &:hover > .mat-card{
+  &:hover > .mat-card {
     background: transparentize(lightgray, 0.8);
   }
+}
+
+.mat-card-header-text {
+  margin: 0;
+}
+
+.selected {
+  background: transparentize(lightgray, 0.5);
 }

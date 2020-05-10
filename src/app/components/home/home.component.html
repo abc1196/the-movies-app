@@ -6,7 +6,7 @@
     <button mat-flat-button color="primary" routerLink="/add">Add new movie</button>
 </div>
 <div *ngIf="movies.length > 0" class="movies-container">
-    <app-movies [movies]="movies" (selectMovie)="onSelectMovie($event)" (deleteMovie)="onDeleteMovie($event)">
+    <app-movies [movies]="movies">
     </app-movies>
-    <app-movie-detail [movie]="selectedMovie"></app-movie-detail>
+    <app-movie-detail></app-movie-detail>
 </div>

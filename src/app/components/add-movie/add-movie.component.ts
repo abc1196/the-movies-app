@@ -33,7 +33,6 @@ export class AddMovieComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit(movieData): void {
-    console.log(movieData);
     this.fileService
       .setFileToBase64String(movieData.image)
       .pipe(take(1))
@@ -44,6 +43,7 @@ export class AddMovieComponent implements OnInit {
         this.router.navigate(['/home']);
       });
   }
+
   onFileChange(event) {
     if (event.target.files && event.target.files.length) {
       const file = event.target.files[0];

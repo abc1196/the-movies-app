@@ -1,4 +1,3 @@
-<div *ngFor="let movie of movies; index as i">
-    <app-movie-item [movie]="movie" [index]="i" [selectMovie]="selectMovie" [deleteMovie]="deleteMovie">
-    </app-movie-item>
-</div>
+<app-movie-item *ngFor="let movie of movies; index as i" [selected]="movie === selectedMovie" [movie]="movie"
+    (selectMovie)="onSelectMovie(movie)" (deleteMovie)="onDeleteMovie(i)">
+</app-movie-item>

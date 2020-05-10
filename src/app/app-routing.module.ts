@@ -5,9 +5,9 @@ import { AddMovieComponent } from './components/add-movie/add-movie.component';
 import { TopMoviesComponent } from './components/top-movies/top-movies.component';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
-  { path: 'add', component: AddMovieComponent },
-  { path: 'top', component: TopMoviesComponent },
+  { path: 'home', pathMatch: 'full', component: HomeComponent },
+  { path: 'add', pathMatch: 'full', component: AddMovieComponent },
+  { path: 'top', pathMatch: 'full', component: TopMoviesComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
 
